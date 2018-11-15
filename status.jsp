@@ -1,15 +1,15 @@
 <%-- 
-    Document   : register
-    Created on : Sep 28, 2018, 11:27:23 AM
+    Document   : status
+    Created on : Oct 3, 2018, 3:09:20 PM
     Author     : User
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.util.*"%>
 <%@page import="java.sql.Connection"%>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,19 +49,6 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        
-        <style>
-            fieldset { 
-    display: block;
-    margin-left: 2px;
-    margin-right: 2px;
-    padding-top: 0.35em;
-    padding-bottom: 0.625em;
-    padding-left: 0.75em;
-    padding-right: 0.75em;
-    border: 2px groove (internal value);
-};
-</style>
     </head>
 
     <body data-spy="scroll" data-target="#header">
@@ -119,10 +106,15 @@
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse zero_mp" id="bs-example-navbar-collapse-1">
                                 <ul class="nav navbar-nav navbar-right main_menu">
-                                    <li class="active"><a href="index.html">Home <span class="sr-only"></span></a></li>
-                                    
-                                    <li><a href="index.html/#contact">contact us</a></li>
-                                    
+                                    <li><a href="#header"> <%String name = (String) session.getAttribute("uname");
+                                                out.print("Hello " + name);  %> </a></li>
+                                    <li class="active"><a href="login.jsp">Home <span class="sr-only">(current)</span></a></li>
+
+
+
+                                    <li><a href="#contact">contact us</a></li>
+
+                                    <li><a href="logout.jsp">logout</a></li>
                                 </ul>
                             </div>
                             <!-- /.navbar-collapse -->
@@ -136,84 +128,142 @@
             <!--end of header area-->
         </section>
         <!--End of Hedaer Section-->
-                
-        
-        <%
-                    String vid="";
-                    String vname="";
-                    String vpasswd="";
-                    String vplace="";
-                   // out.println("record inserted successfully 1");
-            String id=request.getParameter("regno");
-            String name=request.getParameter("firstname");
-            String passwordid=request.getParameter("passwd");
-            String place=request.getParameter("addr");
-           
-          
-            Class.forName("com.mysql.jdbc.Driver");
-           // out.println("record inserted successfully 2");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tailor","root","");
-            //out.println("record inserted successfully 3");
-            String qs="select reg_id from login where reg_id=?";
-            PreparedStatement pss=con.prepareStatement(qs);
-             pss.setString(1,id);
-             ResultSet r=pss.executeQuery();
-             if(r.next())
-             {
-                 out.println("entry already exits");
-                 Thread.sleep(10000);
-                 response.sendRedirect(request.getContextPath() + "/registration.html");
-             }
-             else
-             {
-             
-            String q="call insert_login(?,?,?,?)";
-            PreparedStatement ps=con.prepareStatement(q);
-            ps.setString(1,id);
-            ps.setString(2,name);
-            ps.setString(3,passwordid);
-              ps.setString(4,place);
-               //out.println("record inserted successfully 4");
-               int i=ps.executeUpdate();
-                //request.setAttribute("user", name);
-               //out.println("record inserted successfully 5");
-                if(i>0)
-                                     {
-                                     out.println("record inserted successfully");
-                                     response.sendRedirect(request.getContextPath() + "/login.html");
-                                     
-                                     }
-                                     else{
-                                      out.println("record not inserted");
-                                      response.sendRedirect(request.getContextPath() + "/registration.html");
-                                     }
-             }
-                              
- 
-                                        %>
-                                       
-<style>
-body
-{
 
-background-color: #f0ad4e;
-background-repeat: no-repeat;
-background-size: cover;
-}
-</style>
 
- <!--Start of footer-->
+        <div>
+            <div>
+                <br><br><br>
+                <%
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+                    String o_id = request.getParameter("model");
+                    String id = (String) session.getAttribute("user");
+                    Date olddate = (Date) session.getAttribute("odate");
+                    String pppp = request.getParameter("deldate");
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tailor", "root", "");
+                    if (pppp.equals(null) || pppp.isEmpty()) {
+                        response.sendRedirect(request.getContextPath() + "/login.jsp");
+                    }
+                    else
+                    {
+                   Date newdate = sdf.parse(pppp);
+                    if (newdate.after(olddate)) {
+
+                        java.sql.Timestamp date1 = new java.sql.Timestamp(newdate.getTime());
+                        String qp = "update admin_list set deliver=? where order_id=?;";
+                        PreparedStatement p = con.prepareStatement(qp);
+                        p.setTimestamp(1, date1);
+                        p.setString(2, o_id);
+
+                        int r = p.executeUpdate();
+                        if (r > 0) {
+                            response.sendRedirect(request.getContextPath() + "/login.jsp");
+                        } else {
+                            response.sendRedirect(request.getContextPath() + "/ErrorWeb");
+                        }
+                       //out.println("\n hello world" + date1 + newdate);
+                    } 
+
+                     out.println("\n hello world"+ pppp );
+                    }
+                %>
+
+
+
+                <!--<h1>Not Possible</h1><br> <a href="login.jsp">Click Here</a> to continue-->
+
+            </div>
+        </div>
+
+
+
+        <!--Start of contact-->
+        <section id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="colmd-12">
+                        <div class="contact_area text-center">
+                            <h3>get in touch</h3>
+                            <p>For any complains and suggestion, please mail us.</p>
+                        </div>
+                    </div>
+                </div>
+                <!--End of row-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="office">
+                            <div class="title">
+                                <h5>our office info</h5>
+                            </div>
+                            <div class="office_location">
+                                <div class="address">
+                                    <i class="fa fa-map-marker"><span>Amritapuri, Kollam, Kerala</span></i>
+                                </div>
+                                <div class="phone">
+                                    <i class="fa fa-phone"><span>+ 91 xxxxxxxxxx</span></i>
+                                </div>
+                                <div class="email">
+                                    <i class="fa fa-envelope"><span>youremail@mail.com</span></i>
+                                </div>
+                                <div id="map"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="msg">
+                            <div class="msg_title">
+                                <h5>Drop A Message</h5>
+                            </div>
+                            <div class="form_area">
+                                <!-- CONTACT FORM -->
+                                <div class="contact-form wow fadeIn animated" data-wow-offset="10" data-wow-duration="1.5s">
+                                    <div id="message"></div>
+                                    <form action="scripts/contact.php" class="form-horizontal contact-1" role="form" name="contactform" id="contactform">
+                                        <div class="form-group">
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" name="email" id="email" placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <input type="subject" class="form-control" id="subject" placeholder="Subject *">
+                                                <div class="text_area">
+                                                    <textarea name="contact-message" id="msg" class="form-control" cols="30" rows="8" placeholder="Message"></textarea>
+                                                </div>
+                                                <button type="submit" class="btn custom-btn" data-loading-text="Loading...">Send</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End of col-md-6-->
+                </div>
+                <!--End of row-->
+            </div>
+            <!--End of container-->
+        </section>
+        <!--End of contact-->
+
+
+
+        <!--Start of footer-->
         <section id="footer">
             <div class="container">
                 <div class="row text-center">
                     <div class="col-md-6">
                         <div class="copyright">
-                            <p>@ 2018 - Design By <span><a href="">&#9798;</a></span></p>
+                            <p>@ 2016 - Design By <span><a href="">&#9798;</a></span></p>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="designer">
-                            <p>A Design By <a href="#">Sai Sindhu Akula</a></p>
+                            <p>A Design By <a href="#">XpeedStudio</a></p>
                         </div>
                     </div>
                 </div>
@@ -323,3 +373,4 @@ background-size: cover;
     </body>
 
 </html>
+

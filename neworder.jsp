@@ -1,8 +1,9 @@
 <%-- 
-    Document   : register
-    Created on : Sep 28, 2018, 11:27:23 AM
+    Document   : neworder
+    Created on : Oct 3, 2018, 2:58:41 PM
     Author     : User
 --%>
+
 
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -119,10 +120,10 @@
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse zero_mp" id="bs-example-navbar-collapse-1">
                                 <ul class="nav navbar-nav navbar-right main_menu">
-                                    <li class="active"><a href="index.html">Home <span class="sr-only"></span></a></li>
+                                    <li class="active"><a href="admin.jsp">Home <span class="sr-only"></span></a></li>
                                     
-                                    <li><a href="index.html/#contact">contact us</a></li>
-                                    
+                                  
+                                    <li class="active"><a href="admin.jsp">Logout</a></li>
                                 </ul>
                             </div>
                             <!-- /.navbar-collapse -->
@@ -137,60 +138,70 @@
         </section>
         <!--End of Hedaer Section-->
                 
-        
-        <%
-                    String vid="";
-                    String vname="";
-                    String vpasswd="";
-                    String vplace="";
-                   // out.println("record inserted successfully 1");
-            String id=request.getParameter("regno");
-            String name=request.getParameter("firstname");
-            String passwordid=request.getParameter("passwd");
-            String place=request.getParameter("addr");
-           
-          
-            Class.forName("com.mysql.jdbc.Driver");
-           // out.println("record inserted successfully 2");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tailor","root","");
-            //out.println("record inserted successfully 3");
-            String qs="select reg_id from login where reg_id=?";
-            PreparedStatement pss=con.prepareStatement(qs);
-             pss.setString(1,id);
-             ResultSet r=pss.executeQuery();
-             if(r.next())
-             {
-                 out.println("entry already exits");
-                 Thread.sleep(10000);
-                 response.sendRedirect(request.getContextPath() + "/registration.html");
-             }
-             else
-             {
-             
-            String q="call insert_login(?,?,?,?)";
-            PreparedStatement ps=con.prepareStatement(q);
-            ps.setString(1,id);
-            ps.setString(2,name);
-            ps.setString(3,passwordid);
-              ps.setString(4,place);
-               //out.println("record inserted successfully 4");
-               int i=ps.executeUpdate();
-                //request.setAttribute("user", name);
-               //out.println("record inserted successfully 5");
-                if(i>0)
-                                     {
-                                     out.println("record inserted successfully");
-                                     response.sendRedirect(request.getContextPath() + "/login.html");
-                                     
-                                     }
-                                     else{
-                                      out.println("record not inserted");
-                                      response.sendRedirect(request.getContextPath() + "/registration.html");
-                                     }
-             }
-                              
- 
-                                        %>
+         <section id="#login">
+            <div class="row text-center">
+                    <div class="col-md-6">
+            <form action="order.jsp" method="POST">
+  
+
+                        <div class="container" padding="16">
+    
+    <table width="1200" border="0" cellpadding="5" cellspacing="5">
+        <tr>
+        <td>  Registration Id: <input type="text" name="regno" placeholder="AM.EN.U4CSE15XXX" pattern="AM.EN.U4CSE15[0-9]{3}"></td>
+      </tr>
+        <label for="admin"><b>Top Measurements<br>
+    </b></label>
+      <br>
+        <tr>
+        <td>  Width: <input type="number" name="chest">cm</td>
+      </tr>
+      <br>
+      <tr>
+        <td>  Hands: <input type="number" name="hand">cm</td>
+      </tr>
+      <tr>
+        <td>  Neck: <input type="number" name="neck">cm</td>
+      </tr>
+      <tr>
+        <td>  Shoulder Length: <input type="number" name="shlen">cm</td>
+      </tr>
+      <tr>
+          <td>
+      <b>Bottom Measurements<br>
+    </b>
+          </td>
+      </tr>
+      
+      <tr>
+        <td>  Belly: <input type="number" name="belly">cm</td>
+      </tr>
+      <tr>
+        <td>  Knee: <input type="number" name="knee">cm</td>
+      </tr>
+      <tr>
+        <td>  Legs: <input type="number" name="foot">cm</td>
+      </tr>
+      <tr>
+        <td>  Height: <input type="number" name="hlen">cm</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+     
+      <tr>
+        <td>
+            <button type="submit">process the order</button>
+        </td>
+      </tr>
+    </table>
+    
+  </div>
+
+            </form>
+                    </div></div>
+        </section>
+            
                                        
 <style>
 body

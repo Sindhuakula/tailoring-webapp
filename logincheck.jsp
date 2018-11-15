@@ -114,7 +114,7 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-brand custom_navbar-brand" href="#"><h1>Amrita Tailors</h1></a>
+                                <a class="navbar-brand custom_navbar-brand" href="#"><h1>Swathi Tailors</h1></a>
                             </div>
                             <!--End of navbar-header-->
 
@@ -147,7 +147,7 @@
                     
                    // out.println("record inserted successfully 1");
             String id=request.getParameter("regno");
-            String name=request.getParameter("firstname");
+            
             String passwordid=request.getParameter("passwd");
             //String place=request.getParameter("addr");
            
@@ -156,15 +156,16 @@
            // out.println("record inserted successfully 2");
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tailor","root","");
             //out.println("record inserted successfully 3");
+            
             String q="call logincheck (?,?,?)";
             PreparedStatement ps=con.prepareStatement(q);
             ps.setString(1,id);
-           ps.setString(2,name);
+           ps.setString(2,null);
            ps.setString(3,passwordid);
               
            
             ResultSet r=ps.executeQuery();
-                                    
+                                  
               if(r.next())
               {
                   
@@ -176,14 +177,15 @@
                   session = request.getSession();
                   session.setAttribute("user",id);
                     //storeLoginedUser(session, userna);
-                 response.sendRedirect(request.getContextPath() + "/login/login.jsp");
+                 response.sendRedirect(request.getContextPath() + "/login.jsp");
              }
               else
               {
-                  response.sendRedirect(request.getContextPath() + "/login.html");
+                  response.sendRedirect(request.getContextPath() + "/ErrorWeb");
               }
 
-                                        %>
+            
+            %>
                                        
          
                                             

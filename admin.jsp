@@ -1,14 +1,17 @@
 <%-- 
-    Document   : register
-    Created on : Sep 28, 2018, 11:27:23 AM
+    Document   : admin
+    Created on : Oct 3, 2018, 5:53:00 PM
     Author     : User
 --%>
+
 
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.util.*"%>
 <%@page import="java.sql.Connection"%>
+<%--<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.Connection"%>--%>
 
 
 <!DOCTYPE html>
@@ -119,10 +122,10 @@
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse zero_mp" id="bs-example-navbar-collapse-1">
                                 <ul class="nav navbar-nav navbar-right main_menu">
-                                    <li class="active"><a href="index.html">Home <span class="sr-only"></span></a></li>
+                                    <li class="active"><a href="#header"> <%String name=(String)session.getAttribute("user1");  
+out.print( name);  %> </a></li>
                                     
-                                    <li><a href="index.html/#contact">contact us</a></li>
-                                    
+                                    <li><a href="http://localhost:8080/WebApplication1/admin.html">logout</a></li>
                                 </ul>
                             </div>
                             <!-- /.navbar-collapse -->
@@ -137,61 +140,235 @@
         </section>
         <!--End of Hedaer Section-->
                 
-        
+        <style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+</style>
+<button class="open-button" onclick="openForm()">Update order status</button>
+
+<div class="form-popup" id="myForm">
+    <form action="updatestat.jsp" method="POST" class="form-container">
+    <h1>Order Status</h1>
+
+    <label for="orderid"><b>Order Id</b></label>
+    <input type="text" placeholder="Enter order Id" name="orderid" required>
+
+    
+
+    <button type="submit" class="btn">Update</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+<script>
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+}
+</script>
+
         <%
-                    String vid="";
-                    String vname="";
-                    String vpasswd="";
-                    String vplace="";
+                    
+                    
                    // out.println("record inserted successfully 1");
-            String id=request.getParameter("regno");
-            String name=request.getParameter("firstname");
-            String passwordid=request.getParameter("passwd");
-            String place=request.getParameter("addr");
            
-          
+                   
             Class.forName("com.mysql.jdbc.Driver");
            // out.println("record inserted successfully 2");
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tailor","root","");
             //out.println("record inserted successfully 3");
-            String qs="select reg_id from login where reg_id=?";
-            PreparedStatement pss=con.prepareStatement(qs);
-             pss.setString(1,id);
-             ResultSet r=pss.executeQuery();
-             if(r.next())
+             String qp="select * from orders";
+             PreparedStatement p=con.prepareStatement(qp);
+             ResultSet r=p.executeQuery();%><br>
+             <style>
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+}
+</style>
+             <table>
+  <tr>
+    <th>Registration</th>
+    <th>     Order Id  </th>
+    <th>   Order Status    </th>
+    <th>  Delivery date</th>
+    
+  </tr>
+   <%
+             while(r.next())
              {
-                 out.println("entry already exits");
-                 Thread.sleep(10000);
-                 response.sendRedirect(request.getContextPath() + "/registration.html");
-             }
-             else
+                 String rid = r.getString(1);
+                   String oid = r.getString(2);
+                   String os = r.getString(3);
+                   
+                   String q="select deliver from admin_list where order_id=?";
+             PreparedStatement pp=con.prepareStatement(q);
+             pp.setString(1,oid);
+             ResultSet r1=pp.executeQuery();
+             String oa="";
+             if(r1.next())
              {
-             
-            String q="call insert_login(?,?,?,?)";
-            PreparedStatement ps=con.prepareStatement(q);
-            ps.setString(1,id);
-            ps.setString(2,name);
-            ps.setString(3,passwordid);
-              ps.setString(4,place);
-               //out.println("record inserted successfully 4");
-               int i=ps.executeUpdate();
-                //request.setAttribute("user", name);
-               //out.println("record inserted successfully 5");
-                if(i>0)
-                                     {
-                                     out.println("record inserted successfully");
-                                     response.sendRedirect(request.getContextPath() + "/login.html");
-                                     
-                                     }
-                                     else{
-                                      out.println("record not inserted");
-                                      response.sendRedirect(request.getContextPath() + "/registration.html");
-                                     }
+                 oa=r1.getString(1);
              }
-                              
- 
-                                        %>
-                                       
+                   String stat="";
+                   if(os.equals("0"))
+                       stat="not ready";
+                   else
+                       stat="ready";
+         %>
+  <tr>
+    <td><%=rid%></td>
+   
+    <td> <%=oid%> </td>
+    <td> <%=stat%> </td>
+    <td> <%=oa%> </td>
+  </tr>        
+          
+          <%
+                 
+             }
+            %>
+             </table>
+            <%
+    String qps="select reg_id, address from login";
+             PreparedStatement pw=con.prepareStatement(qps);
+             ResultSet rr=pw.executeQuery();%><br>
+             <style>
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+}
+</style>
+<br><br>
+<br>
+             <table>
+  <tr>
+    <th>Registration</th>
+    <th>  Delivery Address</th>
+  </tr>
+   <%
+             while(rr.next())
+             {
+                 String id = rr.getString(1);
+                   String od = rr.getString(2);
+                  
+         %>
+  <tr>
+    <td><%=id%></td>
+   
+    <td> <%=od%> </td>
+  </tr>        
+          
+          <%
+                 
+             }
+            %>
+                                        </table>
+                   <!--
+                                        <section id="contact">
+                                            
+                                             <div class="form_area">
+     <!-- CONTACT FORM 
+     <div class="contact-form wow fadeIn animated" data-wow-offset="10" data-wow-duration="1.5s">
+         <div id="message"></div>
+         <form action="scripts/contact.php" class="form-horizontal contact-1" role="form" name="contactform" id="contactform">
+             <div class="form-group">
+                 <div class="col-sm-6">
+                     <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                 </div>
+                 <div class="col-sm-6">
+                     <input type="text" class="form-control" name="email" id="email" placeholder="Email">
+                 </div>
+             </div>
+             <div class="form-group">
+                 <div class="col-sm-12">
+                     <input type="subject" class="form-control" id="subject" placeholder="Subject *">
+                     <div class="text_area">
+                         <textarea name="contact-message" id="msg" class="form-control" cols="30" rows="8" placeholder="Message"></textarea>
+                     </div>
+                     <button type="submit" class="btn custom-btn" data-loading-text="Loading...">Send</button>
+                 </div>
+             </div>
+         </form>
+     </div>
+ </div>
+                                            
+                                        </section> -->
+         
+                                            
+       
+                                                   
 <style>
 body
 {

@@ -4,12 +4,6 @@
     Author     : User
 --%>
 
-<%-- 
-    Document   : login
-    Created on : Sep 28, 2018, 5:09:40 PM
-    Author     : User
---%>
-
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -104,7 +98,7 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-brand custom_navbar-brand" href="#"><h1>Amrita Tailors</h1></a>
+                                <a class="navbar-brand custom_navbar-brand" href="#"><h1>Swathi Tailors</h1></a>
                             </div>
                             <!--End of navbar-header-->
 
@@ -113,9 +107,9 @@
                                 <ul class="nav navbar-nav navbar-right main_menu">
                                     <li><a href="#"> <%String name=(String)session.getAttribute("uname");  
             out.print("Hello "+name);%> </a></li>
-                                    <li class="active"><a href="#header">Home <span class="sr-only">(current)</span></a></li>
+                                    <li class="active"><a href="login.jsp">Home <span class="sr-only">(current)</span></a></li>
                                     
-                                    <li><a href="status.jsp">check status</a></li>
+                                   
                                     
                                     <li><a href="logout.jsp">logout</a></li>
                                 </ul>
@@ -150,7 +144,6 @@
                             </div>
             <style>
 body {font-family: Arial, Helvetica, sans-serif;}
-
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -165,7 +158,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
-
 /* Modal Content */
 .modal-content {
     background-color: #fefefe;
@@ -174,7 +166,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
     border: 1px solid #888;
     width: 80%;
 }
-
 /* The Close Button */
 .close {
     color: #aaaaaa;
@@ -182,7 +173,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
     font-size: 28px;
     font-weight: bold;
 }
-
 .close:hover,
 .close:focus {
     color: #000;
@@ -190,71 +180,1447 @@ body {font-family: Arial, Helvetica, sans-serif;}
     cursor: pointer;
 }
 </style>
+<style>
+* {box-sizing: border-box;}
+.container1 {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.overlay {
+  position: absolute; 
+  bottom: 0; 
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1; 
+  width: 100%;
+  transition: .5s ease;
+  opacity:0;
+  color: red;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
+.container1:hover .overlay {
+  opacity: 1;
+}
+</style>
             <div>
                 <table>
-                    <tr><td><img src="img/b1.jpg"></td><td><img src="img/b2.jpg"></td><td><img src="img/b3.jpg"></td><td><img src="img/b4.jpg"></td></tr>
-                    <tr><td><img src="img/ms1.jpg"></td><td><img src="img/ms2.jpg"></td><td><img src="img/ms3.jpg"></td><td><img src="img/ms4.jpg"></td></tr>
-                    <tr><td><img src="img/c1.jpg"></td><td><img src="img/c2.jpg"></td><td><img src="img/c3.jpg"></td><td><img src="img/c4.jpg"></td></tr>
-                    <tr><td><img src="img/m1.jpg"></td><td><img src="img/m2.jpg"></td><td><img src="img/m3.jpg"></td><td><img src="img/m4.jpg"></td></tr>
-                    <tr><td><img src="img/l1.jpg"></td><td><img src="img/l2.png"></td><td><img src="img/l11.jpg"></td><td><img src="img/l4.jpg"></td></tr>
-                    <tr><td><img src="img/mk5.jpg"></td><td><img src="img/mk2.jpg"></td><td><img src="img/mk3.jpg"></td><td><img src="img/mk7.jpg"></td></tr>
+                    <tr><td><div class="container1">
+                                <img src="img/b1.jpg"  class="image" >
+                                <div class="overlay">Item no. : B101
+                                    <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="B101" checked>
+                                        <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+                        </td><td><div class="container1">
+                                <img src="img/b2.jpg"  class="image">
+                                <div class="overlay">Item no. : B102
+                                    <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="B102" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+                        </td><td><div class="container1">
+                                <img src="img/b3.jpg"  class="image">
+                                <div class="overlay">Item no. : B103
+                                    <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="B103" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+                        </td><td><div class="container1">
+                                <img src="img/b4.jpg"  class="image">
+                                <div class="overlay">Item no. : B104
+                                    <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="B104" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td></tr>
+                    <tr><td><div class="container1">
+                                <img src="img/ms1.jpg"  class="image">
+                                <div class="overlay">Item no. : MS101
+                                     <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MS101" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form>
+                                </div></div></td>
+                        <td><div class="container1">
+                                <img src="img/ms2.jpg"  class="image">
+                                <div class="overlay">Item no. : MS102
+                                 <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MS102" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td>
+                        <td><div class="container1">
+                             <img src="img/ms3.jpg"  class="image">
+                                   <div class="overlay">Item no. : MS103
+                                       <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MS103" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td>
+                        <td><div class="container1">
+                              <img src="img/ms4.jpg"  class="image">
+                                         <div class="overlay">Item no. : MS104
+                                                      <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MS104" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td></tr>
+                    <tr>
+                        <td><div class="container1">
+                           <img src="img/c1.jpg"  class="image">
+                                <div class="overlay">Item no. : C101
+                                          <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="C101" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td>
+                          <td><div class="container1">
+                             <img src="img/c2.jpg"  class="image">
+                                   <div class="overlay">Item no. : C102
+                                            <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="C102" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form>
+                                             </div></div></td>
+                        <td><div class="container1">
+                            <img src="img/c3.jpg"  class="image">
+                           <div class="overlay">Item no. : C103
+                                            <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="C103" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td>
+                        <td><div class="container1">
+                                  <img src="img/c4.jpg"  class="image">
+                                      <div class="overlay">Item no. : C104
+                                                      <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="C104" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td></tr>
+                    <tr>
+                        <td><div class="container1">
+                            <img src="img/m1.jpg"  class="image">
+                                     <div class="overlay">Item no. : M101
+                                           <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="M101" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td>
+                        <td><div class="container1">
+                         <img src="img/m2.jpg"  class="image">
+                                   <div class="overlay">Item no. : M102
+                                                     <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="M102" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td>
+                        <td><div class="container1">
+                             <img src="img/m3.jpg"  class="image">
+                                   <div class="overlay">Item no. : M103
+                                                          <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="M103" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td>
+                        <td><div class="container1">
+                            <img src="img/m4.jpg"  class="image">
+                                   <div class="overlay">Item no. : M104
+                                                             <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="M104" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td></tr>
+                    <tr>
+                        <td><div class="container1">
+                            <img src="img/l1.jpg"  class="image">
+                                 <div class="overlay">Item no. : L101
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="L101" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td>
+                        <td><div class="container1">
+                          <img src="img/l2.png"  class="image">
+                               <div class="overlay">Item no. : L102
+                                           <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="L102" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td>
+                        <td><div class="container1">
+                            <img src="img/l11.jpg"  class="image">
+                                   <div class="overlay">Item no. : L111
+                                              <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="L111" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td>
+                        <td><div class="container1">
+                              <img src="img/l4.jpg"  class="image">
+                                <div class="overlay">Item no. : L104
+                                             <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="L104" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td></tr>
+                    <tr>
+                        <td><div class="container1">
+                             <img src="img/mk5.jpg"  class="image">
+                                 <div class="overlay">Item no. : MK101
+                                                           <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MK101" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td>
+                        <td><div class="container1">
+                           <img src="img/mk2.jpg"  class="image">
+                                 <div class="overlay">Item no. : MK102
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MK102" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td>
+                        <td><div class="container1">
+                            <img src="img/mk3.jpg"  class="image">
+                                <div class="overlay">Item no. : MK103
+                                              <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MK103" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td>
+                        <td><div class="container1">
+                           <img src="img/mk7.jpg"  class="image">
+                                   <div class="overlay">Item no. : MK107
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MK107" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td></tr>
+                    
                 </table>
             </div>
         </section>
         <section id="lehenga">
-            <div> 
+            <div class="container1">
                 Designer Lehengas:
                 <table>
-                    <tr><td><img src="img/l1.jpg"><td><img src="img/l2.png"></td><td><img src="img/l11.jpg"></td><td><img src="img/l4.jpg"></td></tr>
-                    <tr><td><img src="img/l15.jpg"></td><td><img src="img/l8.jpg"></td><td><img src="img/l16.jpg"></td><td><img src="img/l17.jpg"></td></tr>
-                    <tr><td><img src="img/l18.jpg"></td><td><img src="img/l20.jpg"></td><td><img src="img/l8.jpg"></td><td><img src="img/l7.jpeg"></td></tr>
+                    <tr>
+<td><div class="container1">
+<img src="img/l1.jpg"  class="image">
+                                      <div class="overlay">Item no. : L101
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="L101" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div> </td>
+<td><div class="container1">
+   <img src="img/l2.png"  class="image">
+          <div class="overlay">Item no. : L102
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="L102" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/l11.jpg"  class="image">
+        <div class="overlay">Item no. : L111
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="L111" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+             </td>
+<td><div class="container1">
+    <img src="img/l4.jpg"  class="image">
+          <div class="overlay">Item no. : L104
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="L104" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td></tr>
+                    <tr>
+ <td><div class="container1">
+<img src="img/l15.jpg"  class="image">
+<div class="overlay">Item no. : L105
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="L105" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td>
+<td><div class="container1">
+<img src="img/l8.jpg"  class="image">
+<div class="overlay">Item no. : L108
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="L108" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/l16.jpg"  class="image">
+<div class="overlay">Item no. : L106
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="L106" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/l17.jpg"  class="image">
+<div class="overlay">Item no. : L107
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="L107" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+ </td></tr>
+ <tr>
+<td><div class="container1">
+<img src="img/l18.jpg"  class="image">
+<div class="overlay">Item no. : L108
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="L108" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/l20.jpg"  class="image">
+<div class="overlay">Item no. : L120
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="L120" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/l8.jpg"  class="image">
+<div class="overlay">Item no. : L008
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="L008" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div></td>
+<td><div class="container1">
+<img src="img/l7.jpeg"  class="image">
+<div class="overlay">Item no. : L007
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="L007" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td></tr>
                 </table>
             </div>
         </section>
         <section id="kurta">
-            <div> Men's Kurta Designs:
+            <div class="container">
+                Men's Kurta Designs:
                 <table>
-                    <tr><td><img src="img/mk2.jpg"></td><td><img src="img/mk3.jpg"></td><td><img src="img/mk11.jpg"></td><td><img src="img/mk7.jpg"></td></tr>
-                    <tr><td><img src="img/mk6.jpeg"></td><td><img src="img/mk8.jpg"></td><td><img src="img/mk9.jpg"></td><td><img src="img/mk10.jpg"></td></tr>
-                   <!-- <tr><td><img src="img/mk11.jpg"></td><td><img src="img/wedding wear.jpg"></td><td><img src="img/mk1.jpg"></td><td><img src="img/mk4.jpg"></td></tr>-->
+                    <tr>
+          <td><div class="container1">
+            <img src="img/mk2.jpg">
+    <div class="overlay">Item no. : MK002
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MK002" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+     </td>
+          <td><div class="container1">
+          <img src="img/mk3.jpg">
+       
+    <div class="overlay">Item no. : MK003
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MK003" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/mk11.jpg">
+<div class="overlay">Item no. : MK101
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MK101" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/mk7.jpg">
+<div class="overlay">Item no. : MK007
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MK007" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td></tr>
+                    <tr>
+<td><div class="container1">
+<img src="img/mk6.jpeg">
+<div class="overlay">Item no. : MK006
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MK006" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/mk8.jpg">
+<div class="overlay">Item no. : MK008
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MK008" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/mk9.jpg">
+<div class="overlay">Item no. : MK009
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MK009" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/mk10.jpg">
+<div class="overlay">Item no. : MK110
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MK110" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td></tr>
+                   <!-- <tr><td><div class="container1">
+<img src="img/mk11.jpg">
+<div class="overlay">Item no. : MK111
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MK111" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/wedding wear.jpg">
+<div class="overlay">Item no. : MK306
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MK306" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/mk1.jpg">
+<div class="overlay">Item no. : MK001
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MK001" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/mk4.jpg">
+<div class="overlay">Item no. : MK004
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MK004" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+</tr>-->
                 </table>
             </div>
         </section>
          <section id="kurti">
-            <div> Kurti Designs:
+            <div class="container">
+                Kurti Designs:
                 <table>
-                    <tr><td><img src="img/c1.jpg"></td><td><img src="img/c17.jpg"></td><td><img src="img/c3.jpg"></td><td><img src="img/c4.jpg"></td></tr>
-                    <tr><td><img src="img/c5.jpg"></td><td><img src="img/c6.jpg"></td><td><img src="img/c7.jpg"></td><td><img src="img/c8.jpg"></td></tr>
-                    <tr><td><img src="img/c9.jpg"></td><td><img src="img/c11.jpg"></td><td><img src="img/c2.jpg"></td><td><img src="img/c18.jpg"></td></tr>
+                    <tr><td><img src="img/c1.jpg"></td>
+<td><div class="container1">
+<img src="img/c17.jpg">
+<div class="overlay">Item no. : C107
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="C107" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/c3.jpg">
+<div class="overlay">Item no. : C003
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="C003" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/c4.jpg">
+<div class="overlay">Item no. : C004
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="C004" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td></tr>
+                    <tr>
+<td><div class="container1">
+<img src="img/c5.jpg">
+<div class="overlay">Item no. : C005
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="C005" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/c6.jpg">
+<div class="overlay">Item no. : C006
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="C006" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/c7.jpg">
+<div class="overlay">Item no. : C007
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="C007" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/c8.jpg">
+<div class="overlay">Item no. : C008
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="C008" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+</tr>
+                    <tr>
+                     <td><div class="container1">
+                     <img src="img/c9.jpg">
+                   <div class="overlay">Item no. : C009
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="C009" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/c11.jpg">
+<div class="overlay">Item no. : C101
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="C101" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/c2.jpg">
+<div class="overlay">Item no. : C002
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="C002" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/c18.jpg">
+<div class="overlay">Item no. : C108
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="C108" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+</tr>
                 </table>
             </div>
         </section>
         
         <section id="shirt">
-            <div> Men's Shirtings:
+            <div class="container">
+                Men's Shirtings:
                 <table>
-                    <tr><td><img src="img/m1.jpg"></td><td><img src="img/m2.jpg"></td><td><img src="img/m3.jpg"></td><td><img src="img/m4.jpg"></td></tr>
-                    <tr><td><img src="img/m5.jpeg"></td><td><img src="img/m6.jpg"></td><td><img src="img/m7.jpg"></td><td><img src="img/m8.jpg"></td></tr>
-                    <tr><td><img src="img/m9.jpg"></td><td><img src="img/m10.jpg"></td><td><img src="img/summer_suit_03.jpg"></td><td><img src="img/imgmen1.jpg"></td></tr>
+                    <tr>
+<td><div class="container1">
+<img src="img/m1.jpg">
+<div class="overlay">Item no. : M001
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="M001" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/m2.jpg">
+<div class="overlay">Item no. : M002
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="M002" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/m3.jpg">
+<div class="overlay">Item no. : M003
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="M003" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/m4.jpg">
+<div class="overlay">Item no. : M004
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="M004" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+
+</td></tr>
+                    <tr>
+<td><div class="container1">
+<img src="img/m5.jpeg">
+<div class="overlay">Item no. : M005
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="M005" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+
+</td>
+<td><div class="container1">
+<img src="img/m6.jpg">
+<div class="overlay">Item no. : M006
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="M006" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/m7.jpg">
+<div class="overlay">Item no. : M007
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="M007" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/m8.jpg">
+<div class="overlay">Item no. : M008
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="M008" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td></tr>
+                    <tr><td><div class="container1">
+<img src="img/m9.jpg">
+<div class="overlay">Item no. : M009
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="M009" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/m10.jpg">
+<div class="overlay">Item no. : M100
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="M100" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/summer_suit_03.jpg">
+<div class="overlay">Item no. : I003
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="I003" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/imgmen1.jpg">
+<div class="overlay">Item no. : I001
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="I001" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td></tr>
                 </table>
             </div>
         </section>
         <section id="blouse">
-            <div> Women Saree and Lahenga Blouse:
+            <div class="container">
+                Women Saree and Lahenga Blouse:
                 <table>
-                    <tr><td><img src="img/b1.jpg"></td><td><img src="img/b2.jpg"></td><td><img src="img/b3.jpg"></td><td><img src="img/b4.jpg"></td></tr>
-                    <tr><td><img src="img/b5.jpg"></td><td><img src="img/b6.jpg"></td><td><img src="img/b7.jpg"></td><td><img src="img/b8.jpg"></td></tr>
-                    <tr><td><img src="img/b9.jpg"></td><td><img src="img/b10.jpg"></td><td><img src="img/b11.jpg"></td><td><img src="img/b12.jpg"></td></tr>
-                    <tr><td><img src="img/b13.jpg"></td><td><img src="img/b14.jpg"></td><td><img src="img/b15.jpg"></td><td><img src="img/b16.jpg"></td></tr>
+                    <tr>
+<td><div class="container1">
+<img src="img/b1.jpg">
+<div class="overlay">Item no. : B001
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="B001" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/b2.jpg">
+<div class="overlay">Item no. : B002
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="B002" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/b3.jpg">
+<div class="overlay">Item no. : B003
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="B003" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/b4.jpg">
+<div class="overlay">Item no. : B004
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="B004" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+</tr>
+                    <tr>
+<td><div class="container1">
+<img src="img/b5.jpg">
+<div class="overlay">Item no. : B005
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="B005" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/b6.jpg">
+<div class="overlay">Item no. : B006
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="B006" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/b7.jpg">
+<div class="overlay">Item no. : B007
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="B007" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/b8.jpg">
+<div class="overlay">Item no. : B008
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="B008" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+</tr>
+                    <tr>
+<td><div class="container1">
+<img src="img/b9.jpg">
+<div class="overlay">Item no. : B009
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="B009" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/b10.jpg">
+<div class="overlay">Item no. : B110
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="B110" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/b11.jpg">
+<div class="overlay">Item no. : B111
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="B111" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/b12.jpg">
+<div class="overlay">Item no. : B112
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="B112" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td></tr>
+                    <tr>
+<td><div class="container1">
+<img src="img/b13.jpg">
+<div class="overlay">Item no. : B113
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="B113" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/b14.jpg">
+<div class="overlay">Item no. : B114
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="B114" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/b15.jpg">
+<div class="overlay">Item no. : B115
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="B115" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/b16.jpg">
+<div class="overlay">Item no. : B116
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="B116" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td></tr>
                 </table>
             </div>
         </section>
         <section id="suit">
-            <div> Men's Suittings:
+            <div class="container">
+                Men's Suittings:
                 <table>
-                    <tr><td><img src="img/ms1.jpg"></td><td><img src="img/ms2.jpg"></td><td><img src="img/ms3.jpg"></td><td><img src="img/ms5.jpg"></td></tr>
-                    <tr><td><img src="img/ms4.jpg"></td><td><img src="img/ms6.jpg"></td><td><img src="img/ms7.jpg"></td><td><img src="img/ms8.jpg"></td></tr>
-                    <tr><td><img src="img/office-wear-mens-suiting-designs-2014-2015.jpg"></td><td><img src="img/ms10.jpg"></td><td><img src="img/ms11.jpg"></td><td><img src="img/three-piece-suit-2011.jpg"></td></tr>
+                    <tr>
+<td><div class="container1">
+<img src="img/ms1.jpg">
+<div class="overlay">Item no. : MS001
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MS001" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/ms2.jpg">
+<div class="overlay">Item no. : MS002
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MS002" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/ms3.jpg">
+<div class="overlay">Item no. : MS003
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MS003" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/ms5.jpg">
+<div class="overlay">Item no. : MS005
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MS005" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td></tr>
+                    <tr>
+<td><div class="container1">
+<img src="img/ms4.jpg">
+<div class="overlay">Item no. : MS004
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MS004" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/ms6.jpg">
+<div class="overlay">Item no. : MS006
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MS006" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/ms7.jpg">
+<div class="overlay">Item no. : MS007
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MS007" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/ms8.jpg">
+<div class="overlay">Item no. : MS008
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MS008" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td></tr>
+                    <tr>
+<td><div class="container1">
+<img src="img/office-wear-mens-suiting-designs-2014-2015.jpg">
+<div class="overlay">Item no. : MS301
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MS301" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/ms10.jpg">
+<div class="overlay">Item no. : MS110
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MS110" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/ms11.jpg">
+<div class="overlay">Item no. : MS111
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MS111" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td>
+<td><div class="container1">
+<img src="img/three-piece-suit-2011.jpg">
+<div class="overlay">Item no. : MS302
+
+                                               <form action="order1.jsp" method="POST">
+                                        <input type="checkbox" name="model" value="MS302" checked>
+                                         <select name="size">
+                                            <option value="small">small</option>
+                                            <option value="medium">medium</option>
+                                            <option value="large">large</option>
+                                            <option value="free">Free</option>
+                                            </select>
+                                        <input type="submit" value="Proceed"></form></div></div>
+</td></tr>
                 </table>
             </div>
         </section>
@@ -271,23 +1637,18 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <script>
 // Get the modal
 var modal = document.getElementById('myModal');
-
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
-
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
     modal.style.display = "block";
 }
-
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modal.style.display = "none";
 }
-
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
@@ -366,8 +1727,6 @@ window.onclick = function(event) {
                     overviewMapControl: false,
                     scrollwheel: false,
                 });
-
-
                 map.addMarker({
                     lat: 23.6911078,
                     lng: 90.5112799,

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : register
-    Created on : Sep 28, 2018, 11:27:23 AM
+    Document   : adminlogin
+    Created on : Oct 3, 2018, 5:41:09 PM
     Author     : User
 --%>
 
@@ -9,6 +9,8 @@
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.util.*"%>
 <%@page import="java.sql.Connection"%>
+<%--<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.Connection"%>--%>
 
 
 <!DOCTYPE html>
@@ -121,7 +123,7 @@
                                 <ul class="nav navbar-nav navbar-right main_menu">
                                     <li class="active"><a href="index.html">Home <span class="sr-only"></span></a></li>
                                     
-                                    <li><a href="index.html/#contact">contact us</a></li>
+                                    
                                     
                                 </ul>
                             </div>
@@ -139,59 +141,34 @@
                 
         
         <%
-                    String vid="";
-                    String vname="";
-                    String vpasswd="";
-                    String vplace="";
+                    
+                    
                    // out.println("record inserted successfully 1");
-            String id=request.getParameter("regno");
-            String name=request.getParameter("firstname");
-            String passwordid=request.getParameter("passwd");
-            String place=request.getParameter("addr");
+            String p=request.getParameter("pwd");
+            String a="admin";
            
           
             Class.forName("com.mysql.jdbc.Driver");
            // out.println("record inserted successfully 2");
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tailor","root","");
             //out.println("record inserted successfully 3");
-            String qs="select reg_id from login where reg_id=?";
-            PreparedStatement pss=con.prepareStatement(qs);
-             pss.setString(1,id);
-             ResultSet r=pss.executeQuery();
-             if(r.next())
-             {
-                 out.println("entry already exits");
-                 Thread.sleep(10000);
-                 response.sendRedirect(request.getContextPath() + "/registration.html");
-             }
-             else
-             {
-             
-            String q="call insert_login(?,?,?,?)";
-            PreparedStatement ps=con.prepareStatement(q);
-            ps.setString(1,id);
-            ps.setString(2,name);
-            ps.setString(3,passwordid);
-              ps.setString(4,place);
-               //out.println("record inserted successfully 4");
-               int i=ps.executeUpdate();
-                //request.setAttribute("user", name);
-               //out.println("record inserted successfully 5");
-                if(i>0)
-                                     {
-                                     out.println("record inserted successfully");
-                                     response.sendRedirect(request.getContextPath() + "/login.html");
-                                     
-                                     }
-                                     else{
-                                      out.println("record not inserted");
-                                      response.sendRedirect(request.getContextPath() + "/registration.html");
-                                     }
-             }
-                              
- 
+            if(p.equals(a))
+            {
+                session = request.getSession();
+                  session.setAttribute("user1","Administrator");
+                response.sendRedirect(request.getContextPath() + "/admin.jsp");
+            }
+            else
+              {
+                  response.sendRedirect(request.getContextPath() + "/admin.html");
+              }
+
                                         %>
                                        
+         
+                                            
+       
+                                                   
 <style>
 body
 {
